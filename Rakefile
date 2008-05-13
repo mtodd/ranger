@@ -1,3 +1,4 @@
+$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 %w(rubygems rake rake/clean rake/rdoctask fileutils pp halcyon logger rack/mock).each{|dep|require dep}
 
 include FileUtils
