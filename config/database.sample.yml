@@ -1,0 +1,15 @@
+## config/database.yml
+development: &defaults
+  adapter: mysql
+  database: ranger_development
+  username: ranger_user
+  password: ranger_password
+  host: localhost
+
+test:
+  <<: *defaults
+  database: ranger_test
+
+production:
+  <<: *defaults
+  database: ranger_production

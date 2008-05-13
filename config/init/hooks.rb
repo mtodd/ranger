@@ -26,7 +26,15 @@
 # Ideal for establishing connections to resources like databases.
 # Establish configuration options in initializer files, though.
 Halcyon::Application.startup do |config|
-  logger.info 'Define startup tasks in config/init/hooks.rb'
+  # Connect to Database
+  Ranger::DB = Sequel.connect(Halcyon.db)
+  Ranger::DB.logger = Halcyon.logger if $DEBUG
+  logger.info 'Connected to Database'
+  
+  # Load Models
+  Dir.glob([Halcyon.paths[:model]/'*.rb']).each do |model|
+    logger.debug "Load: #{File.basename(model).chomp('.rb').camel_case} Model" if require model
+  end
 end
 
 # = Shutdown
@@ -35,5 +43,5 @@ end
 # 
 # Ideal for closing connections to resources.
 Halcyon::Application.shutdown do |config|
-  logger.info 'Define shutdown tasks in config/init/hooks.rb'
+  # logger.info 'Define shutdown tasks in config/init/hooks.rb'
 end

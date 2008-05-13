@@ -28,7 +28,7 @@ Halcyon::Application.route do |r|
   
   # Sample route for the sample functionality in Application.
   # Safe to remove!
-  r.match('/time').to(:controller => 'application', :action => 'time')
+  # r.match('/time').to(:controller => 'application', :action => 'time')
   
   # RESTful routes
   # r.resources :posts
@@ -37,10 +37,10 @@ Halcyon::Application.route do |r|
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
   # clients from calling your create or destroy actions with a GET
-  r.default_routes
+  # r.default_routes
   
   # Change this for the default route to be available at /
-  r.match('/').to(:controller => 'application', :action => 'index')
+  # r.match('/').to(:controller => 'application', :action => 'index')
   # It can often be useful to respond with available functionality if the
   # application is a public-facing service.
   

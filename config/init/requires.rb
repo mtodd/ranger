@@ -7,4 +7,4 @@
 # 
 # RubyGems should already be required by Halcyon, so don't include it.
 
-%w().each{|dep|require dep}
+%w(ranger sequel).each{|dep|require dep}

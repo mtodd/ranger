@@ -26,6 +26,24 @@ end
 # 
 # Add your custom rake tasks here.
 
+desc "Load up the application environment"
+task :env do
+  $log = ''
+  $logger = Logger.new(StringIO.new($log))
+  Halcyon.config = {:logger => $logger}
+  Halcyon::Runner.new
+end
+
+namespace(:db) do
+  desc "Migrate the database to the latest version"
+  task :migrate => :env do
+    current = Sequel::Migrator.get_current_migration_version(WeeDB::DB)
+    latest = Sequel::Migrator.apply(WeeDB::DB, Halcyon.paths[:lib]/'migrations')
+    puts "Database successfully migrated to latest version (#{latest})." if current < latest
+    puts "Migrations finished successfully."
+  end
+end
+
 # ...
 
 # = Default Task
