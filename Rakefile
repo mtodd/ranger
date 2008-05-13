@@ -1,4 +1,4 @@
-%w(rubygems rake rake/clean rake/rdoctask fileutils pp halcyon logger).each{|dep|require dep}
+%w(rubygems rake rake/clean rake/rdoctask fileutils pp halcyon logger rack/mock).each{|dep|require dep}
 
 include FileUtils
 
