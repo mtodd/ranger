@@ -26,6 +26,12 @@
 # Read more about the Merb router at http://merbivore.com/.
 Halcyon::Application.route do |r|
   
+  r.resources :accounts
+  r.resources :clients
+  r.resources :reports
+  
+  r.match('/').to(:controller => 'dashboard', :action => 'index')
+  
   # Sample route for the sample functionality in Application.
   # Safe to remove!
   # r.match('/time').to(:controller => 'application', :action => 'time')

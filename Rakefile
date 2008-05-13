@@ -38,8 +38,8 @@ end
 namespace(:db) do
   desc "Migrate the database to the latest version"
   task :migrate => :env do
-    current = Sequel::Migrator.get_current_migration_version(WeeDB::DB)
-    latest = Sequel::Migrator.apply(WeeDB::DB, Halcyon.paths[:lib]/'migrations')
+    current = Sequel::Migrator.get_current_migration_version(Ranger::DB)
+    latest = Sequel::Migrator.apply(Ranger::DB, Halcyon.paths[:lib]/'migrations')
     puts "Database successfully migrated to latest version (#{latest})." if current < latest
     puts "Migrations finished successfully."
   end
